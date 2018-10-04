@@ -1,0 +1,46 @@
+---
+- name: Install Python 2 Prior
+  become: true
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+- name: Install Dependencies
+  become: true
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python-pip
+      - python-docker
+      - python-dockerpty
+- name: Add Docker GPG Key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: Add Docker Repo
+  become: true
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+- name: Install Docker
+  become: true
+  apt:
+    name: docker-ce
+- name: Add user to docker group
+  become: true
+  user:
+    name: ubuntu
+    group: docker
