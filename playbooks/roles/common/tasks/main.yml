@@ -42,5 +42,13 @@
 - name: Add user to docker group
   become: true
   user:
-    name: ubuntu
+    name: "{{ user }}"
     group: docker
+- name: Create data directory
+  become: true
+  file:
+    path: /data
+    state: directory
+    mode: 0755
+    owner: "{{ user }}"
+    group: ubuntu

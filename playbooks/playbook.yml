@@ -1,5 +1,5 @@
 ---
-- hosts: docker
+- hosts: host_servers
   gather_facts: False
   roles:
     - common

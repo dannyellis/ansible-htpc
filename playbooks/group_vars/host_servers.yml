@@ -1,0 +1,8 @@
+---
+
+user: ubuntu
+media_dir: /mnt/Media
+downloads_dir: /mnt/Media/Downloads
+tv_dir: /mnt/Media/TV
+movies_dir: /mnt/Media/Movies
+config_dir: /data/

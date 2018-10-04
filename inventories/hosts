@@ -1,2 +1,2 @@
-[docker]
-ec2-34-221-83-239.us-west-2.compute.amazonaws.com
+[host_servers]
+ec2-52-27-178-163.us-west-2.compute.amazonaws.com

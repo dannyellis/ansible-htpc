@@ -6,9 +6,9 @@
     restart_policy: unless-stopped
     image: linuxserver/radarr
     volumes:
-      - /home/{{ user }}/radarr/config:/config
-      - /mnt/Media/Downloads:/downloads
-      - /mnt/Media/Movies:/movies
+      - "{{ config_dir }}/radarr/config:/config"
+      - "{{ downloads_dir }}:/downloads"
+      - "{{ movies_dir }}:/movies"
       - /etc/localtime:/etc/localtime:ro
     env:
       PGID: 1000
@@ -23,9 +23,9 @@
     restart_policy: unless-stopped
     image: linuxserver/sonarr
     volumes:
-      - /home/{{ user }}/sonarr/config:/config
-      - /mnt/Media/TV:/tv
-      - /mnt/Media/Downloads:/downloads
+      - "{{ config_dir }}/sonarr/config:/config"
+      - "{{ tv_dir }}:/tv"
+      - "{{ downloads_dir }}:/downloads"
       - /etc/localtime:/etc/localtime:ro
     env:
       PGID: 1000
@@ -40,8 +40,8 @@
     restart_policy: unless-stopped
     image: linuxserver/nzbget
     volumes:
-      - /home/{{ user }}/nzbget/config:/config
-      - /mnt/Media/Downloads:/downloads
+      - "{{ config_dir }}/nzbget/config:/config"
+      - "{{ downloads_dir }}:/downloads"
       - /etc/localtime:/etc/localtime:ro
     env:
       PGID: 1000
@@ -57,8 +57,8 @@
     image: linuxserver/deluge
     network_mode: host
     volumes:
-      - /home/{{ user }}/deluge/config:/config
-      - /mnt/Media/Downloads:/downloads
+      - "{{ config_dir }}/deluge/config:/config"
+      - "{{ downloads_dir }}:/downloads"
     env:
       PGID: 1000
       PUID: 1000
@@ -72,8 +72,8 @@
     restart_policy: unless-stopped
     image: linuxserver/jackett
     volumes:
-      - /home/{{ user }}/jackett/config:/config
-      - /mnt/Media/Downloads:/downloads
+      - "{{ config_dir }}/jackett/config:/config"
+      - "{{ downloads_dir }}:/downloads"
       - /etc/localtime:/etc/localtime:ro
     env:
       PGID: 1000
@@ -90,9 +90,9 @@
     restart_policy: unless-stopped
     image: linuxserver/plex
     volumes:
-      - /home/{{ user }}/plex/config:/config
-      - /mnt/Media/TV:/data/tvshows 
-      - /mnt/Media/Movies:/data/movies 
+      - "{{ config_dir }}/plex/config:/config"
+      - "{{ tv_dir }}:/data/tvshows"
+      - "{{ movies_dir }}:/data/movies"
     env:
       PGID: 1000
       PUID: 1000
