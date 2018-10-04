@@ -16,6 +16,7 @@ The following steps should get you to the point where your already deployed VM w
 ### Installation
 - Ensure you change the values in host_servers.yml to your local paths where you want things to be, timezone, etc.
 - Ensure you add your IP or Hostname to inventories/hosts
+
 `ansible-playbook -i inventories/hosts playbook.yml -u <remote user>`
 
 ## Using
