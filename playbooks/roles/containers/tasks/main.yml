@@ -63,7 +63,7 @@
       PGID: 1000
       PUID: 1000
       UMASK_SET: 022
-      TZ: America/Edmonton
+      TZ: "{{ timezone }}"
 
 - name: Jackett Container
   become: true
@@ -78,7 +78,7 @@
     env:
       PGID: 1000
       PUID: 1000
-      TZ: America/Edmonton
+      TZ: "{{ timezone }}"
     ports:
       - "9117:9117"
 
@@ -96,5 +96,5 @@
     env:
       PGID: 1000
       PUID: 1000
-      TZ: America/Edmonton
+      TZ: "{{ timezone }}"
       VERSION: latest
